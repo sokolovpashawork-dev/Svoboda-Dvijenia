@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ольга Быстрова — тренер здорового движения</title>
+  <meta name="description" content="Онлайн-сопровождение по всему миру. Сначала мобильность и восстановление, потом сила и красивая форма.">
+  <meta property="og:title" content="Ольга Быстрова — тренер здорового движения">
+  <meta property="og:description" content="Свобода движения → Сила → Форма. Онлайн по всему миру.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#f5f0e6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%231f2b24'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='%23f5f0e6' font-family='Georgia,serif' font-weight='700'>О</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Иконки -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-plan" viewBox="0 0 24 24"><path d="M9 4h6v3H9zM7 5.5H6a1 1 0 0 0-1 1V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6.5a1 1 0 0 0-1-1h-1M9 12h6M9 16h6"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M5 20v-8M12 20V5M19 20v-11"/></symbol>
+    <symbol id="i-plate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></symbol>
+    <symbol id="i-pie" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 12V4M12 12l6.9 4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A15 15 0 0 1 4 5a1 1 0 0 1 1-1z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7M6 10v10h12V10"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.500-7-10a4 4 0 0 1 7-2.500A4 4 0 0 1 19 10c0 5.500-7 10-7 10z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6zM9 12l2 2 4-4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#top" class="logo">Ольга Быстрова</a>
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <a href="#about">Обо мне</a>
+        <a href="#services">Услуги</a>
+        <a href="#goals">Цели</a>
+        <a href="#format">Формат работы</a>
+        <a href="#process">Как проходит</a>
+        <a href="#contact">Контакты</a>
+        <a href="#contact" class="btn btn--small nav__cta">Анкета</a>
+      </nav>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="media hero__media">
+        <img src="images/hero.jpg" alt="Ольга Быстрова, тренер здорового движения" onerror="this.remove()">
+      </div>
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow eyebrow--light">Ольга Быстрова · Тренер здорового движения</p>
+          <h1><span class="h1__line">Сначала свобода движения.</span> <span class="h1__line h1__line--accent">Потом сила и форма.</span></h1>
+          <p class="lead">Помогаю вернуть телу свободу движения, чтобы сила и красивая форма стали естественным результатом. Не начинаю с тяжёлых тренировок.</p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn">Заполнить анкету</a>
+            <a href="#format" class="btn btn--ghost-light">Формат работы</a>
+          </div>
+          <ul class="chips chips--light">
+            <li>Дома или в зале</li>
+            <li>Онлайн по всему миру</li>
+            <li>Мягкие практики + силовые</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Путь -->
+    <section class="path" aria-label="Путь">
+      <div class="container path__inner">
+        <span>Свобода движения</span><i aria-hidden="true">→</i><span>Сила</span><i aria-hidden="true">→</i><span>Форма</span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container grid grid--about">
+        <div class="reveal">
+          <p class="eyebrow">Обо мне</p>
+          <h2>Не начинаю с тяжёлых тренировок</h2>
+          <p>У многих тело не готово к интенсивным нагрузкам. Скованность, боли в спине, напряжённая шея, ограниченная подвижность тазобедренных суставов и плеч мешают прогрессу и повышают риск травм.</p>
+          <p>Поэтому первые недели мы работаем в мягких практиках: убираем скованность, улучшаем качество движений и готовим организм к более серьёзным нагрузкам. И только когда тело готово, постепенно добавляем силовые тренировки, чтобы результат был не только красивым, но и безопасным.</p>
+          <p>Моя цель — не просто помочь вам похудеть или стать сильнее. Я хочу, чтобы ваше тело двигалось легко, без боли и ограничений, а тренировки стали частью комфортной жизни.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Сначала возвращаем телу то, что оно теряет из-за сидячей жизни и стресса</h3>
+          <ul class="checks">
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Мобильность суставов</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Свободу движений</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Правильное дыхание</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Контроль над телом</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Баланс и стабильность</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section--sand" id="services">
+      <div class="container">
+        <p class="eyebrow">Услуги</p>
+        <h2>Что я предлагаю</h2>
+        <div class="services">
+          <article class="scard scard--main reveal">
+            <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-plan"/></svg></span>
+            <h3>Индивидуальное онлайн-сопровождение</h3>
+            <ul>
+              <li>Персональная программа тренировок</li>
+              <li>Рекомендации по питанию</li>
+              <li>Контроль техники по видео</li>
+              <li>Регулярная корректировка программы</li>
+              <li>Поддержка и ответы на вопросы в чате</li>
+              <li>Контроль прогресса и помощь в сохранении мотивации</li>
+            </ul>
+          </article>
+          <article class="scard reveal">
+            <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+            <h3>Программа без сопровождения</h3>
+            <ul>
+              <li>Индивидуальный план на 4–6 недель</li>
+              <li>Описание упражнений</li>
+              <li>Рекомендации по прогрессии нагрузок</li>
+            </ul>
+          </article>
+          <article class="scard reveal">
+            <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span>
+            <h3>Консультация</h3>
+            <ul>
+              <li>Разбор текущих тренировок</li>
+              <li>Рекомендации по технике</li>
+              <li>Помощь в постановке целей</li>
+              <li>Ответы на вопросы</li>
+            </ul>
+          </article>
+          <article class="scard reveal">
+            <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-plate"/></svg></span>
+            <h3>План питания</h3>
+            <ul>
+              <li>Расчёт калорийности</li>
+              <li>Рекомендации по рациону</li>
+              <li>Удобное меню или список продуктов</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOALS -->
+    <section class="section" id="goals">
+      <div class="container">
+        <p class="eyebrow">Для кого подходит</p>
+        <h2>Какая у вас цель?</h2>
+        <div class="tabs" role="tablist" aria-label="Выбор цели">
+          <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button">Похудение</button>
+          <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" type="button" tabindex="-1">Мышечная масса</button>
+          <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" type="button" tabindex="-1">Форма</button>
+          <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" type="button" tabindex="-1">Безопасный старт</button>
+        </div>
+
+        <div class="panel panel--nomedia" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+          <div class="panel__text">
+            <h3>Без изнурительных диет и бесконечных часов в зале</h3>
+            <p>Подбираю программу с учётом уровня подготовки, состояния здоровья и графика, чтобы результат пришёл без жёстких ограничений.</p>
+            <ul class="ticks"><li>Программа под ваш уровень и график</li><li>Рекомендации по питанию без жёстких запретов</li><li>Регулярная корректировка по результатам</li></ul>
+            <a href="#contact" class="btn">Обсудить цель</a>
+          </div>
+        </div>
+        <div class="panel panel--nomedia" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+          <div class="media panel__media"><img src="images/goal-2.jpg" alt="" onerror="this.closest('.panel').classList.add('panel--nomedia')" onload="this.closest('.panel').classList.remove('panel--nomedia')"></div>
+          <div class="panel__text">
+            <h3>Сила, которая строится на подвижном теле</h3>
+            <p>Силовые тренировки добавляем постепенно, когда тело готово. Так прогресс идёт стабильно и без травм.</p>
+            <ul class="ticks"><li>Контроль техники по видео</li><li>Прогрессия нагрузок</li><li>Корректировка программы по результатам</li></ul>
+            <a href="#contact" class="btn">Обсудить цель</a>
+          </div>
+        </div>
+        <div class="panel panel--nomedia" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+          <div class="media panel__media"><img src="images/goal-3.jpg" alt="" onerror="this.closest('.panel').classList.add('panel--nomedia')" onload="this.closest('.panel').classList.remove('panel--nomedia')"></div>
+          <div class="panel__text">
+            <h3>Подтянутое тело и лёгкость в движении</h3>
+            <p>Работаем с мобильностью, дыханием, контролем над телом и балансом. Результат — не только красивый, но и комфортный в повседневной жизни.</p>
+            <ul class="ticks"><li>Мобильность и свобода движений</li><li>Правильное дыхание</li><li>Баланс и стабильность</li></ul>
+            <a href="#contact" class="btn">Обсудить цель</a>
+          </div>
+        </div>
+        <div class="panel panel--nomedia" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+          <div class="media panel__media"><img src="images/goal-4.jpg" alt="" onerror="this.closest('.panel').classList.add('panel--nomedia')" onload="this.closest('.panel').classList.remove('panel--nomedia')"></div>
+          <div class="panel__text">
+            <h3>Новичкам и тем, кто возвращается после перерыва</h3>
+            <p>Первые недели — мягкие практики: убираем скованность, улучшаем качество движений и готовим организм к нагрузкам.</p>
+            <ul class="ticks"><li>Мягкий вход без перегрузки</li><li>Учёт состояния здоровья</li><li>Поддержка и ответы на вопросы в чате</li></ul>
+            <a href="#contact" class="btn">Обсудить цель</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMAT -->
+    <section class="section section--dark" id="format">
+      <div class="container">
+        <p class="eyebrow eyebrow--light">Формат работы</p>
+        <h2>Выберите, как вам удобнее</h2>
+        <div class="formats">
+          <article class="fcard fcard--gold reveal">
+            <h3>Полное онлайн-ведение</h3>
+            <p class="fcard__sub">Структура и контроль на каждом этапе</p>
+            <ul class="feat">
+              <li><span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-plan"/></svg></span><div><strong>Индивидуальный план тренировок</strong><span>Прописываю программу под ваши цели и уровень подготовки</span></div></li>
+              <li><span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg></span><div><strong>Отчёт каждую неделю</strong><span>Разбираем прогресс и корректируем нагрузку</span></div></li>
+              <li><span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-plate"/></svg></span><div><strong>Рацион питания</strong><span>Составляю меню под ваши предпочтения и цели</span></div></li>
+              <li><span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-pie"/></svg></span><div><strong>Расчёт БЖУ</strong><span>Подбираю норму под ваши запросы</span></div></li>
+              <li><span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></span><div><strong>Созвон раз в месяц</strong><span>Обсуждаем результаты и план на следующий месяц</span></div></li>
+            </ul>
+          </article>
+
+          <article class="fcard fcard--terra reveal">
+            <h3>Онлайн-созвоны</h3>
+            <p class="fcard__sub">Мягкие практики для бережного восстановления</p>
+            <p class="fcard__lead">Подходит, если у вас:</p>
+            <div class="chips-fit"><ul class="chips chips--one">
+              <li>Осанка</li>
+              <li>После родов</li>
+              <li>Диастаз</li>
+              <li>Грыжи и протрузии</li>
+            </ul></div>
+            <ul class="feat">
+              <li><span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></span><div><strong>8 созвонов в месяц</strong><span>Регулярно встречаемся онлайн и работаем вместе</span></div></li>
+              <li><span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></span><div><strong>Подстраиваемся под ваш график</strong><span>Время созвонов удобно вписывается в вашу неделю</span></div></li>
+              <li><span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg></span><div><strong>Учитываем инвентарь и опыт</strong><span>Занятия под то, что есть у вас дома, и ваш уровень подготовки</span></div></li>
+              <li><span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-plate"/></svg></span><div><strong>Рацион питания</strong><span>Составляю меню, которое вам подходит</span></div></li>
+              <li><span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-pie"/></svg></span><div><strong>Расчёт БЖУ</strong><span>Считаю норму под ваши запросы</span></div></li>
+            </ul>
+          </article>
+        </div>
+        <div class="format-note">
+          <p>Стоимость и формат сотрудничества обсуждаются индивидуально, в зависимости от ваших целей и необходимого уровня сопровождения.</p>
+          <a href="#contact" class="btn btn--light">Узнать стоимость</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="process">
+      <div class="container grid grid--process">
+        <div>
+          <p class="eyebrow">Как проходит работа</p>
+          <h2>Пять шагов от анкеты до результата</h2>
+          <ol class="steps">
+            <li class="reveal"><strong>Заполняете анкету</strong></li>
+            <li class="reveal"><strong>Обсуждаем ваши цели</strong></li>
+            <li class="reveal"><strong>Я составляю персональный план</strong></li>
+            <li class="reveal"><strong>Вы тренируетесь по программе</strong></li>
+            <li class="reveal"><strong>Сопровождаю вас, отслеживаю результаты</strong><span>и при необходимости корректирую план</span></li>
+          </ol>
+        </div>
+        <div class="card card--sand reveal">
+          <h3>Что получает клиент</h3>
+          <ul class="checks">
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Индивидуальный подход</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Регулярная обратная связь</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Поддержка и мотивация</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Безопасные тренировки</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Корректировка программы при необходимости</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Рекомендации по восстановлению и образу жизни</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container cta__inner">
+        <h2>Заполните анкету — и мы обсудим, с чего лучше начать именно вам</h2>
+        <a href="#contact" class="btn btn--light">Заполнить анкету</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container container--narrow">
+        <p class="eyebrow">FAQ</p>
+        <h2>Частые вопросы</h2>
+        <details class="faq">
+          <summary>Я новичок или давно не тренировался(лась). Мне подойдёт?</summary>
+          <p>Да. Начинаем с мягких практик, чтобы убрать скованность и подготовить тело, и только потом добавляем силовые. Так безопасно и новичкам, и тем, кто возвращается после перерыва.</p>
+        </details>
+        <details class="faq">
+          <summary>Где проходят занятия?</summary>
+          <p>Работаем полностью онлайн, из любой точки мира. Заниматься можно дома или в тренажёрном зале, в удобное для вас время, под тот инвентарь, который у вас есть.</p>
+        </details>
+        <details class="faq">
+          <summary>Сколько это стоит?</summary>
+          <p>Стоимость и формат обсуждаются индивидуально, в зависимости от ваших целей и необходимого уровня сопровождения. Заполните анкету, и мы всё обсудим.</p>
+        </details>
+        <details class="faq">
+          <summary>А если у меня боли или есть диагноз?</summary>
+          <p>Программу подбираю с учётом состояния здоровья. При острой боли или диагнозе сначала проконсультируйтесь с врачом: онлайн-тренировки не заменяют лечение.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--sand" id="contact">
+      <div class="container grid grid--contact">
+        <div>
+          <p class="eyebrow">Контакты</p>
+          <h2>Начнём с первого шага</h2>
+          <p>Заполните короткую анкету, и мы обсудим вашу цель и составим план.</p>
+          <ul class="contacts">
+            <li><span>Формат</span><b>Онлайн по всему миру</b></li>
+          </ul>
+        </div>
+        <form class="form card" id="contact-form" novalidate>
+          <h3>Анкета</h3>
+          <label>Как вас зовут
+            <input type="text" name="name" required autocomplete="given-name">
+          </label>
+          <label>Ваша цель
+            <select name="goal">
+              <option>Похудеть</option>
+              <option>Набрать мышечную массу</option>
+              <option>Улучшить физическую форму</option>
+              <option>Начать тренироваться безопасно</option>
+              <option>Вернуться к тренировкам после перерыва</option>
+              <option>Другое</option>
+            </select>
+          </label>
+          <label>Где будете заниматься
+            <select name="place">
+              <option>Дома</option>
+              <option>В тренажёрном зале</option>
+              <option>По-разному</option>
+            </select>
+          </label>
+          <label>Состояние здоровья и ограничения
+            <textarea name="health" rows="3" placeholder="Боли, травмы, диагнозы, если есть"></textarea>
+          </label>
+          <button type="submit" class="btn">Скопировать анкету</button>
+          <textarea id="form-fallback" class="form__fallback" rows="6" readonly hidden aria-label="Текст анкеты для копирования"></textarea>
+          <p class="form__status" id="form-status" role="status" aria-live="polite">Анкета не отправляется автоматически: после копирования вы передаёте её тренеру сами.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__cols">
+        <div>
+          <p class="footer__name">Ольга Быстрова</p>
+          <p class="footer__muted">Тренер здорового движения.<br>Онлайн по всему миру.</p>
+        </div>
+        <div>
+          <h4>Разделы</h4>
+          <a href="#about">Обо мне</a>
+          <a href="#services">Услуги</a>
+          <a href="#format">Формат работы</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <p class="footer__motto">Свобода движения → Сила → Форма</p>
+      <div class="footer__bottom"><span>© <span id="year"></span> Ольга Быстрова</span></div>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Наверх" hidden>↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
