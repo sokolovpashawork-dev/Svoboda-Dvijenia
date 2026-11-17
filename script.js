@@ -24,6 +24,24 @@
     });
   }
 
+  // ----- Плитки в один ряд: уменьшаем шрифт, пока ряд не поместится -----
+  function fitChips() {
+    document.querySelectorAll('.chips--one').forEach(function (ul) {
+      ul.style.fontSize = '';
+      var size = parseFloat(getComputedStyle(ul).fontSize);
+      var guard = 60;
+      while (ul.scrollWidth > ul.clientWidth + 0.5 && size > 7.5 && guard--) {
+        size -= 0.25;
+        ul.style.fontSize = size + 'px';
+      }
+    });
+  }
+  fitChips();
+  window.addEventListener('load', fitChips);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitChips);
+  var fitTimer;
+  window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(fitChips, 120); });
+
   // ----- Вкладки целей -----
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
   function selectTab(tab, focus) {
@@ -74,47 +92,158 @@
     });
   }
 
-  // ----- Анкета: копируется в буфер обмена -----
-  // Сервера нет (GitHub Pages), поэтому данные никуда не уходят автоматически.
+  // ----- Значки соцсетей -----
+  // Адреса впишите в index.html: атрибут href у ссылок data-social="telegram" и data-social="instagram".
+  // Пока там стоит «#», значки не ведут никуда.
+  function isRealUrl(href) {
+    return /^https?:\/\/[^\s]+\.[^\s]+/.test(href || '') && !/^https?:\/\/(www\.)?(t\.me|instagram\.com)\/?$/.test(href);
+  }
+  document.querySelectorAll('[data-social]').forEach(function (a) {
+    if (!isRealUrl(a.getAttribute('href'))) {
+      a.title = 'Ссылка скоро появится';
+      a.addEventListener('click', function (e) { e.preventDefault(); });
+    }
+  });
+  var tgLink = null;
+  document.querySelectorAll('[data-social="telegram"]').forEach(function (a) {
+    if (!tgLink && isRealUrl(a.getAttribute('href'))) tgLink = a.getAttribute('href');
+  });
+
+  // ----- Анкета -----
+  // GitHub Pages не выполняет серверный код, а токен бота нельзя прятать в браузере.
+  // Поэтому «Отправить» собирает текст анкеты, копирует его и открывает чат в Telegram:
+  // клиенту остаётся вставить текст и нажать отправку.
   var form = document.getElementById('contact-form');
-  var status = document.getElementById('form-status');
-  var fallback = document.getElementById('form-fallback');
   if (form) {
+    var status = document.getElementById('form-status');
+    var next = document.getElementById('form-next');
+    var fallback = document.getElementById('form-fallback');
+    var f = form.elements;
+
+    // Сегодняшняя дата по умолчанию
+    function pad2(n) { return n < 10 ? '0' + n : String(n); }
+    var now = new Date();
+    if (f.date && !f.date.value) f.date.value = now.getFullYear() + '-' + pad2(now.getMonth() + 1) + '-' + pad2(now.getDate());
+
+    // Поле «Какие?» показывается, когда выбран ответ, отличный от «Нет»
+    form.querySelectorAll('.yn[data-key]').forEach(function (g) {
+      var note = g.querySelector('.yn__note');
+      g.addEventListener('change', function () {
+        g.classList.remove('invalid');
+        if (!note) return;
+        var v = f[g.getAttribute('data-key')].value;
+        note.hidden = !v || v === 'Нет';
+        if (note.hidden) note.value = '';
+      });
+    });
+    form.addEventListener('input', function (e) {
+      if (e.target.classList) e.target.classList.remove('invalid');
+      if (e.target.name === 'consent') e.target.closest('.check').classList.remove('invalid');
+    });
+
+    function val(name) { return (f[name].value || '').trim(); }
+    function dash(v) { return v ? v : '—'; }
+    function fmtDate(v) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v); return m ? m[3] + '.' + m[2] + '.' + m[1] : v; }
+    function setStatus(text, kind) {
+      status.textContent = text;
+      status.className = 'form__status' + (kind ? ' is-' + kind : '');
+    }
+
+    function validate() {
+      var bad = [];
+      [['fullname', 2], ['age', 0], ['height', 0], ['weight', 0]].forEach(function (p) {
+        var el = f[p[0]];
+        var ok = el.value.trim().length > p[1] - 1 && el.value.trim() !== '';
+        if (ok && el.type === 'number') {
+          var n = parseFloat(el.value);
+          ok = n >= parseFloat(el.min) && n <= parseFloat(el.max);
+        }
+        el.classList.toggle('invalid', !ok);
+        if (!ok) bad.push(el);
+      });
+      form.querySelectorAll('.yn[data-key]').forEach(function (g) {
+        var ok = !!f[g.getAttribute('data-key')].value;
+        g.classList.toggle('invalid', !ok);
+        if (!ok) bad.push(g);
+      });
+      var box = form.querySelector('.check');
+      var consentOk = f.consent.checked;
+      box.classList.toggle('invalid', !consentOk);
+      if (!consentOk) bad.push(box);
+      return bad;
+    }
+
+    function buildText() {
+      var L = [];
+      L.push('Анкета на онлайн-сопровождение');
+      L.push('Дата заполнения: ' + fmtDate(val('date')));
+      L.push('Имя, Фамилия: ' + val('fullname'));
+      L.push('Почему выбрали меня: ' + dash(val('why')));
+      L.push('Возраст: ' + val('age'));
+      L.push('Рост: ' + val('height') + ' см');
+      L.push('Вес: ' + val('weight') + ' кг');
+      L.push('');
+      L.push('ЗДОРОВЬЕ');
+      form.querySelectorAll('.yn[data-key]:not([data-plain])').forEach(function (g) {
+        var key = g.getAttribute('data-key');
+        var line = g.getAttribute('data-label') + ': ' + f[key].value;
+        var note = val(key + '_note');
+        if (note) line += ' (' + note + ')';
+        L.push(line);
+      });
+      L.push('Другие заболевания: ' + (val('other') || 'нет'));
+      L.push('');
+      L.push('ТРЕНИРОВКИ');
+      L.push('Место занятий: ' + f.place.value);
+      L.push('Тренировок в неделю: ' + dash(val('perweek')));
+      L.push('Инвентарь дома: ' + dash(val('inventory')));
+      L.push('Витамины и микроэлементы: ' + dash(val('vitamins')));
+      L.push('Акцент в тренировках: ' + dash(val('focus')));
+      L.push('Активность за последние 3 месяца: ' + dash(val('activity')));
+      return L.join('\n');
+    }
+
+    function afterCopy(copied, text) {
+      var openedHint = tgLink
+        ? 'Открываю Telegram: вставьте анкету в чат и отправьте.'
+        : 'Telegram тренера скоро появится на сайте. Анкета скопирована, отправьте её тренеру сообщением.';
+      if (copied) {
+        fallback.hidden = true;
+        setStatus('Анкета скопирована. ' + openedHint, 'ok');
+      } else {
+        fallback.value = text;
+        fallback.hidden = false;
+        fallback.focus();
+        fallback.select();
+        setStatus('Скопируйте текст выше вручную. ' + openedHint, 'ok');
+      }
+      if (tgLink) {
+        next.href = tgLink;
+        next.hidden = false;
+        window.open(tgLink, '_blank', 'noopener');
+      }
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var name = form.elements.name;
-      var empty = !name.value.trim();
-      name.classList.toggle('invalid', empty);
-      if (empty) {
-        status.textContent = 'Пожалуйста, укажите имя.';
+      var bad = validate();
+      if (bad.length) {
+        setStatus('Заполните обязательные поля, отмеченные звёздочкой, и подтвердите согласие.', 'error');
+        var first = bad[0];
+        first.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+        var focusable = first.matches('input,select,textarea') ? first : first.querySelector('input');
+        if (focusable) focusable.focus({ preventScroll: true });
         return;
       }
-
-      var text =
-        'Здравствуйте, Ольга!\n\n' +
-        'Анкета\n' +
-        'Имя: ' + name.value.trim() + '\n' +
-        'Цель: ' + form.elements.goal.value + '\n' +
-        'Где заниматься: ' + form.elements.place.value + '\n' +
-        'Здоровье и ограничения: ' + (form.elements.health.value.trim() || 'нет');
-
-      function done(copied) {
-        if (copied) {
-          fallback.hidden = true;
-          status.textContent = 'Анкета скопирована. Теперь отправьте её тренеру.';
-        } else {
-          fallback.value = text;
-          fallback.hidden = false;
-          fallback.focus();
-          fallback.select();
-          status.textContent = 'Скопируйте текст выше вручную и отправьте его тренеру.';
-        }
+      var text = buildText();
+      if (text.length > 4000) {
+        setStatus('Анкета получилась слишком длинной для одного сообщения Telegram (' + text.length + ' знаков из 4096). Сократите ответы.', 'error');
+        return;
       }
-
       if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+        navigator.clipboard.writeText(text).then(function () { afterCopy(true, text); }, function () { afterCopy(false, text); });
       } else {
-        done(false);
+        afterCopy(false, text);
       }
     });
   }

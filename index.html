@@ -9,10 +9,10 @@
   <meta property="og:description" content="Свобода движения → Сила → Форма. Онлайн по всему миру.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#f5f0e6">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%231f2b24'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='%23f5f0e6' font-family='Georgia,serif' font-weight='700'>О</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232f6b5c'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='%23f5f0e6' font-family='Georgia,serif' font-weight='700'>О</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Shantell+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,20 +32,28 @@
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.500-7-10a4 4 0 0 1 7-2.500A4 4 0 0 1 19 10c0 5.500-7 10-7 10z"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6zM9 12l2 2 4-4"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M21 4.5L3.4 11.3c-.6.2-.6 1 0 1.2l4.6 1.6 1.8 5.6c.2.5.8.6 1.2.3l2.6-2.2 4.4 3.2c.5.3 1.1.1 1.2-.5L22 5.6c.1-.7-.5-1.3-1-1.1z"/><path d="M8.3 14.2L18.4 7.6l-7.7 8.2"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.9"/><circle cx="17.2" cy="6.8" r=".7" fill="currentColor"/></symbol>
   </svg>
 
   <header class="header">
     <div class="container header__inner">
       <a href="#top" class="logo">Ольга Быстрова</a>
-      <nav class="nav" id="nav" aria-label="Основная навигация">
-        <a href="#about">Обо мне</a>
-        <a href="#services">Услуги</a>
-        <a href="#goals">Цели</a>
-        <a href="#format">Формат работы</a>
-        <a href="#process">Как проходит</a>
-        <a href="#contact">Контакты</a>
-        <a href="#contact" class="btn btn--small nav__cta">Анкета</a>
-      </nav>
+      <div class="header__right">
+        <nav class="nav" id="nav" aria-label="Основная навигация">
+          <a href="#about">Обо мне</a>
+          <a href="#services">Услуги</a>
+          <a href="#goals">Цели</a>
+          <a href="#format">Формат работы</a>
+          <a href="#process">Как проходит</a>
+          <a href="#contact">Контакты</a>
+          <a href="#contact" class="btn btn--small nav__cta">Анкета</a>
+        </nav>
+        <div class="social" role="group" aria-label="Соцсети">
+          <a class="social__link" data-social="telegram" href="#" target="_blank" rel="noopener" aria-label="Telegram"><svg class="ico" aria-hidden="true"><use href="#i-telegram"/></svg></a>
+          <a class="social__link" data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+        </div>
+      </div>
       <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
         <span></span><span></span>
       </button>
@@ -56,6 +64,7 @@
 
     <!-- HERO -->
     <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
       <div class="media hero__media">
         <img src="images/hero.jpg" alt="Ольга Быстрова, тренер здорового движения" onerror="this.remove()">
       </div>
@@ -113,7 +122,7 @@
         <p class="eyebrow">Услуги</p>
         <h2>Что я предлагаю</h2>
         <div class="services">
-          <article class="scard scard--main reveal">
+          <article class="scard reveal">
             <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-plan"/></svg></span>
             <h3>Индивидуальное онлайн-сопровождение</h3>
             <ul>
@@ -313,43 +322,144 @@
 
     <!-- CONTACT -->
     <section class="section section--sand" id="contact">
-      <div class="container grid grid--contact">
-        <div>
-          <p class="eyebrow">Контакты</p>
+      <div class="container">
+        <div class="contact__head">
+          <p class="eyebrow">Контакты и анкета</p>
           <h2>Начнём с первого шага</h2>
-          <p>Заполните короткую анкету, и мы обсудим вашу цель и составим план.</p>
-          <ul class="contacts">
-            <li><span>Формат</span><b>Онлайн по всему миру</b></li>
-          </ul>
+          <p>Заполните анкету, чтобы я могла составить программу с учётом вашего здоровья и целей. Это займёт 5–7 минут. Работаю онлайн по всему миру.</p>
         </div>
+
         <form class="form card" id="contact-form" novalidate>
-          <h3>Анкета</h3>
-          <label>Как вас зовут
-            <input type="text" name="name" required autocomplete="given-name">
+          <div class="form__group">
+            <h3>О вас</h3>
+            <div class="fgrid">
+              <label>Дата заполнения
+                <input type="date" name="date">
+              </label>
+              <label><span class="req">Имя, Фамилия</span>
+                <input type="text" name="fullname" autocomplete="name" maxlength="80">
+              </label>
+              <label class="full">Почему решили работать именно со мной?
+                <textarea name="why" rows="3" maxlength="400"></textarea>
+              </label>
+            </div>
+            <div class="fgrid fgrid--3">
+              <label><span class="req">Возраст</span>
+                <input type="number" name="age" inputmode="numeric" min="10" max="100" placeholder="лет">
+              </label>
+              <label><span class="req">Рост</span>
+                <input type="number" name="height" inputmode="numeric" min="100" max="230" placeholder="см">
+              </label>
+              <label><span class="req">Вес</span>
+                <input type="number" name="weight" inputmode="decimal" min="25" max="300" step="0.1" placeholder="кг">
+              </label>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <h3>Здоровье</h3>
+            <div class="fgrid fgrid--yn">
+            <div class="yn" role="radiogroup" aria-labelledby="q-gkt" data-key="gkt" data-label="Проблемы с ЖКТ">
+              <span class="yn__q req" id="q-gkt">Проблемы с ЖКТ</span>
+              <div class="seg"><label><input type="radio" name="gkt" value="Нет"><span>Нет</span></label><label><input type="radio" name="gkt" value="Есть"><span>Есть</span></label></div>
+              <input type="text" class="yn__note" name="gkt_note" placeholder="Какие? Опишите кратко" maxlength="120" aria-label="Проблемы с ЖКТ: уточнение" hidden>
+            </div>
+            <div class="yn" role="radiogroup" aria-labelledby="q-heart" data-key="heart" data-label="Сердечно-сосудистая система">
+              <span class="yn__q req" id="q-heart">Проблемы с сердечно-сосудистой системой</span>
+              <div class="seg"><label><input type="radio" name="heart" value="Нет"><span>Нет</span></label><label><input type="radio" name="heart" value="Есть"><span>Есть</span></label></div>
+              <input type="text" class="yn__note" name="heart_note" placeholder="Какие? Опишите кратко" maxlength="120" aria-label="Сердечно-сосудистая система: уточнение" hidden>
+            </div>
+            <div class="yn" role="radiogroup" aria-labelledby="q-pressure" data-key="pressure" data-label="Давление">
+              <span class="yn__q req" id="q-pressure">Проблемы с давлением</span>
+              <div class="seg"><label><input type="radio" name="pressure" value="Нет"><span>Нет</span></label><label><input type="radio" name="pressure" value="Есть"><span>Есть</span></label></div>
+              <input type="text" class="yn__note" name="pressure_note" placeholder="Какие? Опишите кратко" maxlength="120" aria-label="Давление: уточнение" hidden>
+            </div>
+            <div class="yn" role="radiogroup" aria-labelledby="q-hormones" data-key="hormones" data-label="Гормональные проблемы">
+              <span class="yn__q req" id="q-hormones">Гормональные проблемы</span>
+              <div class="seg"><label><input type="radio" name="hormones" value="Нет"><span>Нет</span></label><label><input type="radio" name="hormones" value="Есть"><span>Есть</span></label></div>
+              <input type="text" class="yn__note" name="hormones_note" placeholder="Какие? Опишите кратко" maxlength="120" aria-label="Гормональные проблемы: уточнение" hidden>
+            </div>
+            <div class="yn" role="radiogroup" aria-labelledby="q-breastfeeding" data-key="breastfeeding" data-label="Грудное вскармливание сейчас">
+              <span class="yn__q req" id="q-breastfeeding">Грудное вскармливание на данный момент</span>
+              <div class="seg"><label><input type="radio" name="breastfeeding" value="Нет"><span>Нет</span></label><label><input type="radio" name="breastfeeding" value="Есть"><span>Есть</span></label></div>
+              <input type="text" class="yn__note" name="breastfeeding_note" placeholder="Какие? Опишите кратко" maxlength="120" aria-label="Грудное вскармливание сейчас: уточнение" hidden>
+            </div>
+            <div class="yn" role="radiogroup" aria-labelledby="q-women" data-key="women" data-label="Женское здоровье">
+              <span class="yn__q req" id="q-women">Женское здоровье (болезненные месячные, кисты и т. д.)</span>
+              <div class="seg"><label><input type="radio" name="women" value="Нет"><span>Нет</span></label><label><input type="radio" name="women" value="Есть"><span>Есть</span></label></div>
+              <input type="text" class="yn__note" name="women_note" placeholder="Какие? Опишите кратко" maxlength="120" aria-label="Женское здоровье: уточнение" hidden>
+            </div>
+            <div class="yn" role="radiogroup" aria-labelledby="q-surgery" data-key="surgery" data-label="Операции">
+              <span class="yn__q req" id="q-surgery">Были ли операции, в том числе эстетические</span>
+              <div class="seg"><label><input type="radio" name="surgery" value="Нет"><span>Нет</span></label><label><input type="radio" name="surgery" value="Были"><span>Были</span></label></div>
+              <input type="text" class="yn__note" name="surgery_note" placeholder="Какие? Опишите кратко" maxlength="120" aria-label="Операции: уточнение" hidden>
+            </div>
+            <div class="yn" role="radiogroup" aria-labelledby="q-varicose" data-key="varicose" data-label="Варикоз">
+              <span class="yn__q req" id="q-varicose">Варикоз</span>
+              <div class="seg"><label><input type="radio" name="varicose" value="Нет"><span>Нет</span></label><label><input type="radio" name="varicose" value="Есть"><span>Есть</span></label></div>
+              <input type="text" class="yn__note" name="varicose_note" placeholder="Какие? Опишите кратко" maxlength="120" aria-label="Варикоз: уточнение" hidden>
+            </div>
+            <div class="yn" role="radiogroup" aria-labelledby="q-injuries" data-key="injuries" data-label="Травмы, переломы">
+              <span class="yn__q req" id="q-injuries">Травмы, переломы</span>
+              <div class="seg"><label><input type="radio" name="injuries" value="Нет"><span>Нет</span></label><label><input type="radio" name="injuries" value="Были"><span>Были</span></label><label><input type="radio" name="injuries" value="Есть"><span>Есть</span></label></div>
+              <input type="text" class="yn__note" name="injuries_note" placeholder="Какие? Опишите кратко" maxlength="120" aria-label="Травмы, переломы: уточнение" hidden>
+            </div>
+            <div class="yn" role="radiogroup" aria-labelledby="q-diastasis" data-key="diastasis" data-label="Диастаз">
+              <span class="yn__q req" id="q-diastasis">Диастаз</span>
+              <div class="seg"><label><input type="radio" name="diastasis" value="Нет"><span>Нет</span></label><label><input type="radio" name="diastasis" value="Есть"><span>Есть</span></label></div>
+              <input type="text" class="yn__note" name="diastasis_note" placeholder="Какие? Опишите кратко" maxlength="120" aria-label="Диастаз: уточнение" hidden>
+            </div>
+            </div>
+            <div class="fgrid">
+              <label class="full">Другие заболевания
+                <textarea name="other" rows="2" maxlength="400" placeholder="Если нет, оставьте пустым"></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <h3>Тренировки</h3>
+            <div class="fgrid">
+              <div class="yn" role="radiogroup" aria-labelledby="q-place" data-key="place" data-label="Место занятий" data-plain="1">
+                <span class="yn__q req" id="q-place">Место занятий</span>
+                <div class="seg">
+                  <label><input type="radio" name="place" value="Дом"><span>Дом</span></label>
+                  <label><input type="radio" name="place" value="Зал"><span>Зал</span></label>
+                </div>
+              </div>
+              <label>Сколько тренировок в неделю планируете?
+                <select name="perweek">
+                  <option value="">Выберите</option>
+                  <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option>
+                  <option>Пока не знаю</option>
+                </select>
+              </label>
+              <label class="full">Инвентарь, который есть дома (для тех, кто планирует заниматься дома)
+                <textarea name="inventory" rows="2" maxlength="300" placeholder="Например: гантели, резинки, коврик"></textarea>
+              </label>
+              <label class="full">Какие витамины и микроэлементы принимаете на данный момент?
+                <textarea name="vitamins" rows="2" maxlength="300"></textarea>
+              </label>
+              <label class="full">На что в тренировках хотите расставить акцент? (Например, ягодицы или спина)
+                <textarea name="focus" rows="2" maxlength="300"></textarea>
+              </label>
+              <label class="full">Напишите свою активность за последние 3 месяца: тренировки, кардио, что и сколько? Занимались с тренером или самостоятельно?
+                <textarea name="activity" rows="4" maxlength="500"></textarea>
+              </label>
+            </div>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" name="consent">
+            <span>Я добровольно передаю сведения о здоровье тренеру, чтобы он составил для меня программу. <span class="req"></span></span>
           </label>
-          <label>Ваша цель
-            <select name="goal">
-              <option>Похудеть</option>
-              <option>Набрать мышечную массу</option>
-              <option>Улучшить физическую форму</option>
-              <option>Начать тренироваться безопасно</option>
-              <option>Вернуться к тренировкам после перерыва</option>
-              <option>Другое</option>
-            </select>
-          </label>
-          <label>Где будете заниматься
-            <select name="place">
-              <option>Дома</option>
-              <option>В тренажёрном зале</option>
-              <option>По-разному</option>
-            </select>
-          </label>
-          <label>Состояние здоровья и ограничения
-            <textarea name="health" rows="3" placeholder="Боли, травмы, диагнозы, если есть"></textarea>
-          </label>
-          <button type="submit" class="btn">Скопировать анкету</button>
-          <textarea id="form-fallback" class="form__fallback" rows="6" readonly hidden aria-label="Текст анкеты для копирования"></textarea>
-          <p class="form__status" id="form-status" role="status" aria-live="polite">Анкета не отправляется автоматически: после копирования вы передаёте её тренеру сами.</p>
+
+          <div class="form__actions">
+            <button type="submit" class="btn btn--send"><svg class="ico" aria-hidden="true"><use href="#i-telegram"/></svg>Отправить</button>
+            <a href="#" class="btn btn--outline" id="form-next" target="_blank" rel="noopener" hidden>Открыть Telegram</a>
+          </div>
+          <textarea id="form-fallback" class="form__fallback" rows="8" readonly hidden aria-label="Текст анкеты для копирования"></textarea>
+          <p class="form__status" id="form-status" role="status" aria-live="polite">Нажмите «Отправить»: анкета скопируется и откроется Telegram. Вставьте текст в чат и отправьте сообщение. Данные не хранятся на сайте.</p>
         </form>
       </div>
     </section>
@@ -362,6 +472,10 @@
         <div>
           <p class="footer__name">Ольга Быстрова</p>
           <p class="footer__muted">Тренер здорового движения.<br>Онлайн по всему миру.</p>
+          <div class="social social--light" role="group" aria-label="Соцсети">
+            <a class="social__link" data-social="telegram" href="#" target="_blank" rel="noopener" aria-label="Telegram"><svg class="ico" aria-hidden="true"><use href="#i-telegram"/></svg></a>
+            <a class="social__link" data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          </div>
         </div>
         <div>
           <h4>Разделы</h4>
