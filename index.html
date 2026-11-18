@@ -12,7 +12,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232f6b5c'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='%23f5f0e6' font-family='Georgia,serif' font-weight='700'>О</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Shantell+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,6 +33,7 @@
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6zM9 12l2 2 4-4"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></symbol>
     <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M21 4.5L3.4 11.3c-.6.2-.6 1 0 1.2l4.6 1.6 1.8 5.6c.2.5.8.6 1.2.3l2.6-2.2 4.4 3.2c.5.3 1.1.1 1.2-.5L22 5.6c.1-.7-.5-1.3-1-1.1z"/><path d="M8.3 14.2L18.4 7.6l-7.7 8.2"/></symbol>
+    <symbol id="i-fox" viewBox="0 0 32 32"><path d="M3 2.5L11.4 8.8Q16 7.6 20.6 8.8L29 2.5L28.2 13.6L31 18.2L22.4 21.4L16 29.6L9.6 21.4L1 18.2L3.8 13.6Z" fill="currentColor" stroke="none"/><path d="M1 18.2L9.6 21.4L16 29.6L22.4 21.4L31 18.2L23 16.8Q16 20.6 9 16.8Z" fill="none" stroke="none" style="fill:var(--fox-light,#f5f0e6)"/><path d="M5.4 6.6L9.6 9.8L5.2 12.2ZM26.6 6.6L22.4 9.8L26.8 12.2Z" stroke="none" opacity=".5" style="fill:var(--fox-light,#f5f0e6)"/><path d="M8.2 13.4L12.6 14.8L9 16ZM23.8 13.4L19.4 14.8L23 16Z" stroke="none" style="fill:var(--fox-light,#f5f0e6)"/><circle cx="16" cy="28" r="1.5" stroke="none" style="fill:var(--fox-ink,#1d3a33)"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.9"/><circle cx="17.2" cy="6.8" r=".7" fill="currentColor"/></symbol>
   </svg>
 
@@ -77,11 +78,6 @@
             <a href="#contact" class="btn">Заполнить анкету</a>
             <a href="#format" class="btn btn--ghost-light">Формат работы</a>
           </div>
-          <ul class="chips chips--light">
-            <li>Дома или в зале</li>
-            <li>Онлайн по всему миру</li>
-            <li>Мягкие практики + силовые</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -89,7 +85,7 @@
     <!-- Путь -->
     <section class="path" aria-label="Путь">
       <div class="container path__inner">
-        <span>Свобода движения</span><i aria-hidden="true">→</i><span>Сила</span><i aria-hidden="true">→</i><span>Форма</span>
+        <span>Свобода движения</span><i class="fox" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#i-fox"/></svg></i><span>Сила</span><i class="fox" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#i-fox"/></svg></i><span>Форма</span>
       </div>
     </section>
 
@@ -122,9 +118,11 @@
         <p class="eyebrow">Услуги</p>
         <h2>Что я предлагаю</h2>
         <div class="services">
-          <article class="scard reveal">
-            <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-plan"/></svg></span>
-            <h3>Индивидуальное онлайн-сопровождение</h3>
+          <details class="scard reveal">
+            <summary>
+              <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-plan"/></svg></span>
+              <h3>Индивидуальное онлайн-сопровождение</h3>
+            </summary>
             <ul>
               <li>Персональная программа тренировок</li>
               <li>Рекомендации по питанию</li>
@@ -133,35 +131,41 @@
               <li>Поддержка и ответы на вопросы в чате</li>
               <li>Контроль прогресса и помощь в сохранении мотивации</li>
             </ul>
-          </article>
-          <article class="scard reveal">
-            <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></span>
-            <h3>Программа без сопровождения</h3>
+          </details>
+          <details class="scard reveal">
+            <summary>
+              <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+              <h3>Программа без сопровождения</h3>
+            </summary>
             <ul>
               <li>Индивидуальный план на 4–6 недель</li>
               <li>Описание упражнений</li>
               <li>Рекомендации по прогрессии нагрузок</li>
             </ul>
-          </article>
-          <article class="scard reveal">
-            <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span>
-            <h3>Консультация</h3>
+          </details>
+          <details class="scard reveal">
+            <summary>
+              <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span>
+              <h3>Консультация</h3>
+            </summary>
             <ul>
               <li>Разбор текущих тренировок</li>
               <li>Рекомендации по технике</li>
               <li>Помощь в постановке целей</li>
               <li>Ответы на вопросы</li>
             </ul>
-          </article>
-          <article class="scard reveal">
-            <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-plate"/></svg></span>
-            <h3>План питания</h3>
+          </details>
+          <details class="scard reveal">
+            <summary>
+              <span class="icon-wrap"><svg class="ico" aria-hidden="true"><use href="#i-plate"/></svg></span>
+              <h3>План питания</h3>
+            </summary>
             <ul>
               <li>Расчёт калорийности</li>
               <li>Рекомендации по рациону</li>
               <li>Удобное меню или список продуктов</li>
             </ul>
-          </article>
+          </details>
         </div>
       </div>
     </section>
@@ -262,7 +266,7 @@
 
     <!-- PROCESS -->
     <section class="section" id="process">
-      <div class="container grid grid--process">
+      <div class="container container--narrow">
         <div>
           <p class="eyebrow">Как проходит работа</p>
           <h2>Пять шагов от анкеты до результата</h2>
@@ -273,17 +277,6 @@
             <li class="reveal"><strong>Вы тренируетесь по программе</strong></li>
             <li class="reveal"><strong>Сопровождаю вас, отслеживаю результаты</strong><span>и при необходимости корректирую план</span></li>
           </ol>
-        </div>
-        <div class="card card--sand reveal">
-          <h3>Что получает клиент</h3>
-          <ul class="checks">
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Индивидуальный подход</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Регулярная обратная связь</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Поддержка и мотивация</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Безопасные тренировки</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Корректировка программы при необходимости</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Рекомендации по восстановлению и образу жизни</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -485,7 +478,7 @@
           <a href="#faq">FAQ</a>
         </div>
       </div>
-      <p class="footer__motto">Свобода движения → Сила → Форма</p>
+      <p class="footer__motto"><span>Свобода движения</span><i class="fox" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#i-fox"/></svg></i><span>Сила</span><i class="fox" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#i-fox"/></svg></i><span>Форма</span></p>
       <div class="footer__bottom"><span>© <span id="year"></span> Ольга Быстрова</span></div>
     </div>
   </footer>

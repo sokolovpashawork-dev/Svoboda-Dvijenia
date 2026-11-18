@@ -42,6 +42,25 @@
   var fitTimer;
   window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(fitChips, 120); });
 
+  // ----- Девиз в подвале: растягиваем на всю ширину -----
+  function fitMotto() {
+    var m = document.querySelector('.footer__motto');
+    if (!m) return;
+    m.style.justifyContent = 'flex-start';
+    m.style.width = 'max-content';
+    m.style.fontSize = '100px';
+    var natural = m.scrollWidth;
+    m.style.width = '';
+    var avail = m.parentElement.clientWidth;
+    if (natural > 0 && avail > 0) m.style.fontSize = Math.floor(avail / natural * 100 * 10) / 10 + 'px';
+    m.style.justifyContent = '';
+  }
+  fitMotto();
+  window.addEventListener('load', fitMotto);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMotto);
+  var mottoTimer;
+  window.addEventListener('resize', function () { clearTimeout(mottoTimer); mottoTimer = setTimeout(fitMotto, 120); });
+
   // ----- Вкладки целей -----
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
   function selectTab(tab, focus) {
