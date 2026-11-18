@@ -61,6 +61,18 @@
   var mottoTimer;
   window.addEventListener('resize', function () { clearTimeout(mottoTimer); mottoTimer = setTimeout(fitMotto, 120); });
 
+  // ----- Лента услуг -----
+  var rail = document.querySelector('.rail');
+  document.querySelectorAll('[data-rail]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (!rail) return;
+      var dir = btn.getAttribute('data-rail') === 'next' ? 1 : -1;
+      var card = rail.querySelector('.pcard');
+      var step = card ? card.getBoundingClientRect().width + 16 : 300;
+      rail.scrollBy({ left: dir * step, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  });
+
   // ----- Вкладки целей -----
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
   function selectTab(tab, focus) {
