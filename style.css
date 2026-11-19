@@ -152,9 +152,10 @@ h3 { font-size: 1.35rem; }
 .tab { font: 600 .88rem var(--sans); padding: .75em 1.5em; background: transparent; color: var(--ink); border: 1.5px solid var(--emerald); border-radius: 0; cursor: pointer; transition: background .2s, color .2s; }
 .tab:hover { background: rgba(36,21,46,.07); }
 .tab[aria-selected="true"] { background: var(--emerald); color: var(--cream); }
-.panel { display: grid; grid-template-columns: 1fr 1fr; background: var(--card); border: 1px solid var(--line); border-radius: 0; overflow: hidden; }
-.panel__media { min-height: 340px; }
-.panel__text { padding: clamp(28px, 5vw, 56px); align-self: center; }
+.panel { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); background: var(--card); border: 1px solid var(--line); border-radius: 0; overflow: hidden; }
+.panel__media { min-height: 440px; }
+.panel__media img { object-position: 15% 50%; }
+.panel__text { padding: clamp(24px, 3.6vw, 48px); align-self: center; }
 .panel__text h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
 .panel__text p { color: var(--muted); }
 .panel__text .btn { margin-top: 10px; }
@@ -290,7 +291,7 @@ h3 { font-size: 1.35rem; }
   .grid--about, .grid--process, .grid--contact, .panel { grid-template-columns: 1fr; }
   .fgrid, .fgrid--yn { grid-template-columns: 1fr; }
   .fgrid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-  .panel__media { min-height: 260px; }
+  .panel__media { min-height: 0; aspect-ratio: 16 / 10; }
 
   /* Первый экран: фото сверху, текст под ним */
   .hero { flex-direction: column; align-items: stretch; min-height: 0; padding: 0 0 32px; }
