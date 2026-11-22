@@ -611,3 +611,10 @@ a, button, summary { touch-action: manipulation; }
 .btn--tg { background: linear-gradient(180deg, #37aee2, #1e96c8); border-color: #1e96c8; color: #fff; }
 .btn--tg:hover { background: linear-gradient(180deg, #46b8ea, #2aa3d6); border-color: #2aa3d6; color: #fff; }
 .btn--tg .ico { fill: #fff; stroke: #fff; }
+
+/* ===== Доступность: контраст и ссылка «Перейти к содержанию» ===== */
+.btn--tg { background: linear-gradient(180deg, #1779ad, #0f6fa0); border-color: #0f6fa0; }
+.btn--tg:hover { background: linear-gradient(180deg, #1c86bd, #1478ac); border-color: #1478ac; }
+.offer__list li.no { color: #766b79; }
+.skip { position: fixed; left: 12px; top: -64px; z-index: 100; padding: .7em 1.1em; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; transition: top .15s; }
+.skip:focus { top: 12px; }
