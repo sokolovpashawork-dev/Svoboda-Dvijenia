@@ -120,11 +120,21 @@
   document.querySelectorAll('[data-pick]').forEach(function(a){a.addEventListener('click',function(e){
     e.preventDefault(); clear();
     var c=cards[a.dataset.pick]; if(!c)return;
+    var st=c.closest('.fstep'); if(st&&!st.classList.contains('is-open'))st.querySelector('.chev__c').click();
     var r=c.querySelector('.offer__rec'); r.textContent='Рекомендуем для цели «'+a.dataset.goal+'»'; r.hidden=false; c.classList.add('is-rec');
     document.getElementById('services').scrollIntoView({behavior:'smooth',block:'start'});
   });});
-  document.querySelectorAll('[data-goal-link]').forEach(function(a){a.addEventListener('click',function(e){
-    e.preventDefault(); var t=[].find.call(document.querySelectorAll('.tab'),function(x){return x.textContent.trim()===a.dataset.goalLink;});
-    if(t)t.click(); document.getElementById('goals').scrollIntoView({behavior:'smooth',block:'start'});
-  });});
+})();
+
+// Шаги 1 и 2: плавное раскрытие карточек форматов
+(function(){
+  document.querySelectorAll('.fstep').forEach(function(step){
+    var btn=step.querySelector('.chev__c'), more=btn.querySelector('.chev__more');
+    btn.addEventListener('click',function(){
+      var open=!step.classList.contains('is-open');
+      step.classList.toggle('is-open',open);
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      if(more)more.textContent=open?'Свернуть':'Подробнее';
+    });
+  });
 })();
