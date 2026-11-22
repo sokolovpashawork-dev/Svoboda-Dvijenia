@@ -25,23 +25,30 @@
   }
 
   // ----- Девиз в подвале: растягиваем на всю ширину -----
+  // Замер делаем на невидимой копии вне потока (position:fixed), чтобы страница не менялась
+  // и не «подпрыгивала» при прокрутке на телефоне.
   function fitMotto() {
     var m = document.querySelector('.footer__motto');
     if (!m) return;
-    m.style.justifyContent = 'flex-start';
-    m.style.width = 'max-content';
-    m.style.fontSize = '100px';
-    var natural = m.scrollWidth;
-    m.style.width = '';
     var avail = m.parentElement.clientWidth;
+    var probe = m.cloneNode(true);
+    probe.setAttribute('aria-hidden', 'true');
+    probe.style.cssText = 'position:fixed;left:0;top:0;visibility:hidden;pointer-events:none;width:max-content;justify-content:flex-start;font-size:100px;margin:0;';
+    document.body.appendChild(probe);
+    var natural = probe.scrollWidth;
+    document.body.removeChild(probe);
     if (natural > 0 && avail > 0) m.style.fontSize = Math.floor(avail / natural * 100 * 10) / 10 + 'px';
-    m.style.justifyContent = '';
   }
   fitMotto();
   window.addEventListener('load', fitMotto);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMotto);
   var mottoTimer;
-  window.addEventListener('resize', function () { clearTimeout(mottoTimer); mottoTimer = setTimeout(fitMotto, 120); });
+  var lastW = window.innerWidth;
+  window.addEventListener('resize', function () {
+    if (window.innerWidth === lastW) return; // адресная строка на телефоне меняет только высоту
+    lastW = window.innerWidth;
+    clearTimeout(mottoTimer); mottoTimer = setTimeout(fitMotto, 120);
+  });
 
   // ----- Вкладки целей -----
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
