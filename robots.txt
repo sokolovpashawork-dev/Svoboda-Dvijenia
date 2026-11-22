@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sokolovpashawork-dev.github.io/Svoboda-Dvijenia/sitemap.xml
