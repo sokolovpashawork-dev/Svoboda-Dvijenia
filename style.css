@@ -187,30 +187,6 @@ h3 { font-size: 1.35rem; }
 .faq[open] summary::after { transform: translateY(-50%) rotate(45deg); }
 .faq p { color: var(--muted); padding-bottom: 1.3rem; margin: 0; }
 
-/* ===== Контакты и форма ===== */
-.form { display: grid; gap: 26px; }
-.fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 22px; }
-.fgrid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.fgrid .full { grid-column: 1 / -1; }
-.form label { display: grid; gap: 6px; font-size: .85rem; font-weight: 600; color: var(--muted); align-content: start; }
-.req::after { content: " *"; color: var(--accent); }
-.form input, .form select, .form textarea {
-  font: inherit; font-size: 1rem; font-weight: 400; color: var(--ink); background: #fff;
-  border: 1px solid var(--line); border-radius: 0; padding: .8em 1em; width: 100%; transition: border-color .2s;
-}
-.form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(36,21,46,.15); }
-.form input.invalid, .form select.invalid { border-color: #c0392b; }
-.form textarea { resize: vertical; }
-
-
-.form__actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.btn--send { display: inline-flex; align-items: center; gap: .6em; padding-inline: 2.4em; }
-.btn--send .ico { width: 20px; height: 20px; }
-.form__fallback { font-size: .85rem; }
-.form__status { margin: 0; font-size: .9rem; color: var(--muted); }
-.form__status.is-error { color: #b03a2e; font-weight: 600; }
-.form__status.is-ok { color: var(--accent); font-weight: 600; }
-
 /* ===== Футер ===== */
 .footer { background: rgba(36,21,46,.94); color: var(--cream); padding: 26px 0 14px; }
 .footer__cols { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 32px; }
@@ -250,8 +226,6 @@ h3 { font-size: 1.35rem; }
 }
 @media (max-width: 900px) {
   .grid--about, .grid--process, .panel { grid-template-columns: 1fr; }
-  .fgrid, .fgrid--yn { grid-template-columns: 1fr; }
-  .fgrid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .panel__media { margin: 16px 16px 0; max-width: 520px; }
 
   /* Первый экран: фото сверху, текст под ним */
@@ -293,12 +267,8 @@ h3 { font-size: 1.35rem; }
   .cta__inner { gap: 22px; }
 
   .faq summary { padding: 1.1rem 2.2rem 1.1rem 0; }
-  .form input, .form select, .form textarea { font-size: 16px; }
-  .form .btn { width: 100%; }
-  .form { gap: 22px; }
   .social__link { width: 36px; height: 36px; }
   .social__link .ico { width: 18px; height: 18px; }
-  .form .card, .card.form { padding: 20px 16px; }
 
   .footer { padding: 20px 0 12px; }
   .footer__motto { margin: 12px 0 8px; }
@@ -332,26 +302,6 @@ body::before {
 /* поле-ловушка для спам-ботов */
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 
-/* ===== Анкета во всплывающем окне ===== */
-.btn--outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-.btn--outline:hover { background: var(--ink); color: var(--cream); }
-html.has-modal { overflow: hidden; }
-.modal {
-  border: 0; padding: 0; margin: auto; color: var(--ink); background: var(--card);
-  width: min(560px, calc(100% - 32px)); max-height: calc(100dvh - 32px); overflow: auto;
-  box-shadow: 0 24px 80px rgba(20,13,25,.5);
-}
-.modal[open] { animation: modal-in .25s ease; }
-.modal::backdrop { background: rgba(20,13,25,.72); backdrop-filter: blur(3px); }
-@keyframes modal-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .modal[open] { animation: none; } }
-.modal__form { position: relative; padding: clamp(24px, 4vw, 38px); gap: 16px; }
-.modal__form h2 { margin: 0; font-size: clamp(1.6rem, 5vw, 2.2rem); padding-right: 44px; }
-.modal__form .eyebrow { margin-bottom: .6rem; }
-.modal__close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 1.7rem; line-height: 1; cursor: pointer; transition: background .2s, color .2s; }
-.modal__close:hover { background: var(--ink); color: var(--cream); }
-.form select { appearance: none; -webkit-appearance: none; padding-right: 2.6em; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%231b1220' stroke-width='1.8'/%3E%3C/svg%3E") no-repeat right 1em center; }
-@media (max-width: 600px) { .modal { width: calc(100% - 20px); max-height: calc(100dvh - 20px); } .modal__form { padding: 22px 18px; } .modal__form .fgrid--3 { gap: 10px; } }
 @media (max-width: 360px) { .social__link { width: 32px; height: 32px; } .social__link .ico { width: 16px; height: 16px; } .social { gap: 4px; } }
 
 
@@ -450,11 +400,13 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 }
 @media (max-width: 640px) {
   .feature__tiers { grid-template-columns: 1fr; padding: 12px; }
-  .feature__lead { min-height: 0; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 14px; padding: 68px 18px 20px; }
-  .feature__lead .offer__icon { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; }
+  .feature__lead { min-height: 0; display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 14px 12px; padding: 14px 16px 18px; }
+  .feature__lead .offer__icon { position: relative; top: auto; left: auto; width: 44px; height: 44px; }
   .feature__lead .offer__icon .ico { width: 22px; height: 22px; }
-  .feature__lead img { inset: 0; width: 100%; object-position: 50% 15%; }
-  .feature__lead::after { background: linear-gradient(to top, rgba(20,12,28,.97) 42%, rgba(20,12,28,.2) 100%); }
+  .feature__lead .feature__badge { position: relative; top: auto; right: auto; justify-self: end; }
+  .feature__lead img { inset: 0 0 0 auto; width: 70%; opacity: .45; object-position: 50% 20%; }
+  .feature__lead::after { background: linear-gradient(to right, rgba(26,15,35,.98) 40%, rgba(26,15,35,.55) 100%); }
+  .feature__text { grid-column: 1 / -1; }
   .feature__text { max-width: none; padding: 0; }
   .offers { grid-template-columns: 1fr; }
   .offer__media { height: 190px; }
@@ -489,3 +441,89 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .offer__list li { padding-top: .55em; padding-bottom: .55em; }
   .offer__btn { width: 100%; }
 }
+
+/* ===== Мобильная версия: «Подходит, если у вас» и «Пять шагов» ===== */
+@media (max-width: 640px) {
+  .offer__for { margin: 14px 0 20px; padding: 14px 14px 16px; background: #f1e9f3; border: 1px solid #d9cfd8; }
+  .offer__for .offer__group { margin: 0; padding-top: 0; border-top: 0; font-size: .8rem; }
+  .offer__chips { display: grid; grid-template-columns: 1fr; gap: 6px; margin-top: 12px; }
+  .offer__chips span { display: block; justify-content: initial; text-align: left; hyphens: none; overflow-wrap: normal; background: #fff; border: 1px solid #d9cfd8; border-left: 3px solid #4f3270; padding: .55em .9em; font-size: .92rem; font-weight: 500; line-height: 1.3; }
+  .offer__chips span:last-child:nth-child(odd) { grid-column: auto; }
+}
+@media (max-width: 700px) {
+  .steps { grid-template-columns: 1fr; gap: 0; margin-top: 1.6rem; }
+  .steps li { position: relative; padding: 0 0 24px 68px; min-height: 80px; }
+  .steps li:last-child { padding-bottom: 0; min-height: 52px; }
+  .steps li::before { position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 52px; height: 52px; margin: 0; font-size: 1.35rem; line-height: 1; color: #fff; -webkit-text-stroke: 0; background: #4f3270; letter-spacing: .02em; }
+  .steps li:not(:last-child)::after { content: ""; position: absolute; left: 25px; top: 58px; bottom: 6px; width: 2px; background: repeating-linear-gradient(to bottom, #b9a6c9 0 5px, transparent 5px 10px); }
+  .steps strong { font-size: 1.12rem; line-height: 1.2; margin: 0; padding-top: 14px; hyphens: none; overflow-wrap: normal; word-break: normal; }
+  .steps span { display: block; margin-top: 6px; font-size: .95rem; line-height: 1.4; }
+  .steps li:has(span) strong { padding-top: 4px; }
+}
+@media (max-width: 640px) {
+  .offer--tier:not(.offer--best) .offer__body { padding-top: 18px; }
+}
+
+/* ===== Связь «Цели → Форматы» ===== */
+/* Рекомендация формата внутри вкладки цели */
+.rec { margin-top: 22px; display: grid; gap: 10px; }
+.rec__title { margin: 0 0 2px; font-family: var(--serif); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.rec__item { display: flex; align-items: center; gap: 14px; padding: 12px 14px; background: rgba(255,255,255,.7); border: 1px solid var(--line); border-left: 3px solid var(--line); color: var(--ink); text-decoration: none; transition: background .2s, border-color .2s, transform .2s; }
+.rec__item:hover { background: #fff; border-color: var(--accent); transform: translateX(3px); }
+.rec__item--main { background: #fff; border-color: var(--accent); border-left-width: 4px; box-shadow: 0 6px 18px rgba(36,21,46,.12); }
+.rec__ico { flex: none; display: grid; place-items: center; width: 44px; height: 44px; background: #eee5f0; color: var(--accent); }
+.rec__item--main .rec__ico { background: var(--accent); color: #fff; }
+.rec__ico .ico { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.rec__txt { display: grid; gap: 2px; min-width: 0; flex: 1; }
+.rec__txt b { font-family: var(--serif); font-size: 1.05rem; letter-spacing: .03em; text-transform: uppercase; font-weight: 600; }
+.rec__txt small { color: var(--muted); font-size: .88rem; line-height: 1.35; }
+.rec__item--main .rec__txt b::after { content: "Рекомендуем"; margin-left: .7em; padding: .25em .6em; vertical-align: middle; font: 600 .66rem var(--sans); letter-spacing: .1em; background: var(--accent); color: #fff; }
+.rec__arrow { flex: none; color: var(--accent); font-size: 1.3rem; }
+
+/* Путь «цель → формат» над карточками услуг */
+.pathmap { display: flex; align-items: stretch; gap: 12px; margin: 28px 0 0; }
+.pathmap__step { flex: 1; display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: #fff; border: 1px solid var(--line); }
+.pathmap__step--2 { border-color: var(--accent); }
+.pathmap__n { flex: none; display: grid; place-items: center; width: 40px; height: 40px; background: var(--accent); color: #fff; font-family: var(--serif); font-size: 1.2rem; }
+.pathmap__step b { display: block; font-family: var(--serif); text-transform: uppercase; letter-spacing: .03em; font-size: 1.02rem; font-weight: 600; line-height: 1.2; }
+.pathmap__step small { color: var(--accent); font-weight: 600; }
+.pathmap__arrow { align-self: center; color: var(--accent); font-size: 1.8rem; }
+.pathmap + .feature { margin-top: 14px; }
+
+/* «Для целей» в карточках формата */
+.offer__goals { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 12px; }
+.offer__goals span { font: 600 .72rem var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.offer__goals a { padding: .25em .7em; font-size: .82rem; font-weight: 500; color: var(--accent); background: #fff; border: 1px solid var(--accent); text-decoration: none; transition: background .2s, color .2s; }
+.offer__goals a:hover { background: var(--accent); color: #fff; }
+
+/* Подсветка выбранного формата */
+.offer__rec { margin: -4px -4px 12px; padding: .55em .8em; background: var(--accent); color: #fff; font: 600 .8rem var(--sans); letter-spacing: .04em; }
+.offer__rec[hidden] { display: none; }
+.offer--tier.is-rec { outline: 3px solid #b9a0d6; outline-offset: -3px; animation: recpulse 1.2s ease-out 1; }
+@keyframes recpulse { 0% { box-shadow: 0 0 0 0 rgba(185,160,214,.9); } 100% { box-shadow: 0 0 0 22px rgba(185,160,214,0); } }
+
+@media (max-width: 700px) {
+  .pathmap { flex-direction: column; gap: 4px; margin-top: 20px; }
+  .pathmap__arrow { transform: rotate(90deg); line-height: 1; margin: -2px 0; align-self: flex-start; margin-left: 12px; }
+  .pathmap__step { padding: 12px 14px; }
+  .rec__item { padding: 10px 12px; gap: 12px; }
+  .rec__item--main .rec__txt b::after { display: block; width: max-content; margin: 4px 0 0; }
+  .rec__ico { width: 40px; height: 40px; }
+}
+
+@media (max-width: 640px) {
+  .offer__list li { line-height: 1.4; }
+  .offer__goals { gap: 8px 6px; margin-bottom: 14px; }
+  .offer__goals span { flex: 0 0 100%; margin: 0 0 2px; }
+  .offer__goals a { padding: .4em .8em; font-size: .86rem; line-height: 1.2; }
+  .rec__txt small { hyphens: none; }
+}
+.nb { white-space: nowrap; }
+@media (max-width: 640px) {
+  .offer--tier .offer__list:last-of-type { margin-bottom: 6px; }
+}
+
+/* Кнопки со ссылкой в Telegram */
+.btn--tg { display: inline-flex; align-items: center; justify-content: center; gap: .6em; }
+.btn--tg .ico { width: 20px; height: 20px; }
+a.btn.offer__btn { display: flex; align-items: center; justify-content: center; text-decoration: none; }
