@@ -600,3 +600,14 @@ a, button, summary { touch-action: manipulation; }
   .chev__c { gap: 14px; padding-top: 18px; padding-bottom: 18px; }
   .chev__c i { font-size: 2.4rem; }
 }
+
+/* ===== Иконки соцсетей в фирменных цветах ===== */
+.social__link, .social--light .social__link { border: 0; background: transparent; padding: 3px; transition: transform .2s, filter .2s; }
+.social__link:hover, .social--light .social__link:hover { background: transparent; border: 0; transform: translateY(-2px); filter: brightness(1.08) saturate(1.1); }
+.social__link .ico--brand, .footer .social__link .ico--brand, .header .social__link .ico--brand { width: 100%; height: auto; aspect-ratio: 1; display: block; }
+.ico--brand { stroke: none; fill: none; }
+
+/* ===== Кнопки «Написать в Telegram» — фирменный голубой ===== */
+.btn--tg { background: linear-gradient(180deg, #37aee2, #1e96c8); border-color: #1e96c8; color: #fff; }
+.btn--tg:hover { background: linear-gradient(180deg, #46b8ea, #2aa3d6); border-color: #2aa3d6; color: #fff; }
+.btn--tg .ico { fill: #fff; stroke: #fff; }
