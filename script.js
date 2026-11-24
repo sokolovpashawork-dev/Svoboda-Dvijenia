@@ -106,11 +106,27 @@
     });
   }
 
+  // ----- Плавающая кнопка «Написать в Telegram» (только телефон, CSS показывает её до 760 px) -----
+  // Видна, пока на экране нет первого экрана, финального призыва и подвала: там своя кнопка или контакты.
+  var fab = document.querySelector('.fab-cta');
+  if (fab && 'IntersectionObserver' in window) {
+    var seen = {};
+    function updateFab() {
+      fab.hidden = seen.hero !== false || seen.cta || seen.footer;
+    }
+    [['.hero', 'hero'], ['.cta', 'cta'], ['.footer', 'footer']].forEach(function (p) {
+      var el = document.querySelector(p[0]); if (!el) { seen[p[1]] = false; return; }
+      new IntersectionObserver(function (entries) {
+        seen[p[1]] = entries[entries.length - 1].isIntersecting; updateFab();
+      }).observe(el);
+    });
+  }
+
   // ----- Значки соцсетей -----
   // Адреса впишите в index.html: атрибут href у ссылок data-social="telegram" и data-social="vk".
-  // Пока там стоит «#», значки не ведут никуда.
+  // Если там «#» или адрес без страницы (только t.me, vk.com, vk.ru), значок не ведёт никуда и показывает подсказку.
   function isRealUrl(href) {
-    return /^https?:\/\/[^\s]+\.[^\s]+/.test(href || '') && !/^https?:\/\/(www\.)?(t\.me|vk\.com)\/?$/.test(href);
+    return /^https?:\/\/[^\s]+\.[^\s]+/.test(href || '') && !/^https?:\/\/(www\.)?(t\.me|vk\.com|vk\.ru)\/?$/.test(href);
   }
   document.querySelectorAll('[data-social]').forEach(function (a) {
     if (!isRealUrl(a.getAttribute('href'))) {
@@ -123,13 +139,15 @@
 // Связь «цель → формат»: рекомендации во вкладках целей и ссылки назад
 (function(){
   var cards={}; document.querySelectorAll('.offer--tier').forEach(function(c){var b=c.querySelector('[data-service]'); if(b)cards[b.dataset.service]=c;});
-  function clear(){Object.keys(cards).forEach(function(k){var c=cards[k];c.classList.remove('is-rec');c.querySelector('.offer__rec').hidden=true;});}
+  function clear(){Object.keys(cards).forEach(function(k){var c=cards[k];c.classList.remove('is-rec');});}
   document.querySelectorAll('[data-pick]').forEach(function(a){a.addEventListener('click',function(e){
     e.preventDefault(); clear();
     var c=cards[a.dataset.pick]; if(!c)return;
     var st=c.closest('.fstep'); if(st&&!st.classList.contains('is-open'))st.querySelector('.chev__c').click();
-    var r=c.querySelector('.offer__rec'); r.textContent='Рекомендуем для цели «'+a.dataset.goal+'»'; r.hidden=false; c.classList.add('is-rec');
-    document.getElementById('services').scrollIntoView({behavior:'smooth',block:'start'});
+    c.classList.add('is-rec');
+    // На телефоне карточки стоят друг под другом: прокручиваем к нужному формату (1 или 2), на компьютере — к началу раздела «Услуги»
+    var target=(st&&window.matchMedia('(max-width: 760px)').matches)?st:document.getElementById('services');
+    target.scrollIntoView({behavior:'smooth',block:'start'});
   });});
 })();
 

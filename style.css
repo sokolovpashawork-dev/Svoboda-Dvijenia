@@ -450,8 +450,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 /* «Для целей» в карточках формата */
 
 /* Подсветка выбранного формата */
-.offer__rec { margin: -4px -4px 12px; padding: .55em .8em; background: var(--accent); color: #fff; font: 600 .8rem var(--sans); letter-spacing: .04em; }
-.offer__rec[hidden] { display: none; }
 .offer--tier.is-rec { outline: 3px solid #b9a0d6; outline-offset: -3px; animation: recpulse 1.2s ease-out 1; }
 @keyframes recpulse { 0% { box-shadow: 0 0 0 0 rgba(185,160,214,.9); } 100% { box-shadow: 0 0 0 22px rgba(185,160,214,0); } }
 
@@ -718,7 +716,7 @@ html:has(.terms[open]) { overflow: hidden; }
 .learn__doc { display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; text-align: left; cursor: zoom-in; font: inherit; }
 .learn__img { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #fff; border: 1px solid rgba(255, 255, 255, .3); transition: border-color .2s, transform .2s; }
 .learn__img img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.learn__cap { display: block; margin-top: 7px; font-size: .8rem; line-height: 1.3; color: rgba(244, 240, 243, .85); }
+.learn__cap { display: block; margin-top: 8px; font-size: .85rem; line-height: 1.3; color: rgba(244, 240, 243, .92); }
 .learn__doc:hover .learn__img, .learn__doc:focus-visible .learn__img { border-color: #d9c8ec; }
 @media (hover: hover) and (pointer: fine) { .learn__doc:hover .learn__img { transform: scale(1.03); } }
 .learn__doc:focus-visible { outline: 2px solid #d9c8ec; outline-offset: 3px; }
@@ -779,8 +777,24 @@ html:has(.lb[open]) { overflow: hidden; }
 @keyframes blurIn { from { opacity: 0; filter: blur(12px); transform: translateY(-6px); } to { opacity: 1; filter: blur(0); transform: none; } }
 .faq[open] p { animation: blurIn .5s cubic-bezier(.4, .12, .25, 1) backwards; }
 .panel:not([hidden]) { animation: blurIn .5s cubic-bezier(.4, .12, .25, 1) backwards; }
-.offer__rec:not([hidden]) { animation: blurIn .4s cubic-bezier(.4, .12, .25, 1) backwards; }
 .to-top:not([hidden]) { animation: blurIn .4s cubic-bezier(.4, .12, .25, 1) backwards; }
 @media (prefers-reduced-motion: reduce) {
-  .health-note__text, .faq[open] p, .panel:not([hidden]), .offer__rec:not([hidden]), .to-top:not([hidden]) { animation: fadeIn .5s ease backwards; }
+  .health-note__text, .faq[open] p, .panel:not([hidden]), .to-top:not([hidden]) { animation: fadeIn .5s ease backwards; }
 }
+
+/* ===== Финальный призыв: строка про режим ответа ===== */
+.cta__act { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.cta__note { margin: 0; font-size: .85rem; line-height: 1.4; text-align: right; color: rgba(244,240,243,.8); }
+@media (max-width: 760px) { .cta__act { align-items: flex-start; } .cta__note { text-align: left; } }
+
+.cta__note span { display: block; }
+
+/* ===== Плавающая кнопка «Написать в Telegram» (только телефон) ===== */
+.fab-cta { display: none; }
+@media (max-width: 760px) {
+  .fab-cta:not([hidden]) { position: fixed; left: 14px; right: 74px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 40; display: flex; align-items: center; justify-content: center; gap: .6em; height: 48px; padding: 0 14px; border: 1px solid #0f6fa0; background: linear-gradient(180deg, #1779ad, #0f6fa0); color: #fff; font: 600 .82rem var(--sans); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,.28); animation: fabIn .4s cubic-bezier(.4, .12, .25, 1) backwards; }
+  .fab-cta .ico { width: 18px; height: 18px; flex: none; fill: #fff; stroke: #fff; }
+  body:has(.burger[aria-expanded="true"]) .fab-cta { display: none; }
+}
+@keyframes fabIn { from { opacity: 0; filter: blur(8px); transform: translateY(10px); } to { opacity: 1; filter: blur(0); transform: none; } }
+@media (prefers-reduced-motion: reduce) { .fab-cta:not([hidden]) { animation: fadeIn .4s ease backwards; } }
