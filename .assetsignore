@@ -1,0 +1,8 @@
+# Эти файлы не публикуются на сайте (Cloudflare): служебные и внутренние
+.assetsignore
+wrangler.jsonc
+.github
+.git
+.gitignore
+.wrangler
+node_modules

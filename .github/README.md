@@ -12,9 +12,10 @@ images/       # фотографии (og.jpg: картинка для превь
 robots.txt    # правила для поисковиков
 sitemap.xml   # карта сайта
 fonts/        # шрифты Inter и Oswald (woff2)
-tools/        # служебный скрипт смены адреса (на сайт не публикуется)
-_config.yml   # исключает tools/ из публикации на GitHub Pages
-.github/README.md  # эта инструкция: на GitHub открывается на главной странице репозитория, на сайт не попадает
+wrangler.jsonc  # настройки публикации на Cloudflare (папка сайта — корень репозитория)
+.assetsignore   # что Cloudflare не публикует: папку .github и служебные файлы
+.github/README.md        # эта инструкция: на GitHub открывается на главной странице репозитория, на сайт не попадает
+.github/tools/set-domain.sh  # служебный скрипт смены адреса (на сайт не попадает)
 ```
 
 ## Публикация на GitHub Pages
@@ -22,6 +23,10 @@ _config.yml   # исключает tools/ из публикации на GitHub 
 1. Загрузите все файлы вместе с папкой `images` в публичный репозиторий.
 2. Откройте **Settings → Pages**, выберите **Deploy from a branch**, ветку `main` и папку `/ (root)`, нажмите **Save**.
 3. Через минуту сайт появится по адресу `https://ВАШ_ЛОГИН.github.io/ИМЯ_РЕПОЗИТОРИЯ/`.
+
+## Публикация на Cloudflare
+
+Если сайт собирается через Cloudflare (Workers & Pages, команда деплоя `npx wrangler deploy`), настройки лежат в `wrangler.jsonc`: сайт берётся из корня репозитория, страница 404 — из `404.html`, а что не публиковать, перечислено в `.assetsignore`. **Не добавляйте в репозиторий `_config.yml`, `package.json` и подобные файлы**: Cloudflare по ним решит, что это Jekyll- или Node-проект, и попытается его собрать, а сборка упадёт.
 
 ## Фотографии
 
@@ -81,7 +86,7 @@ _config.yml   # исключает tools/ из публикации на GitHub 
 1. Купите домен и в настройках DNS добавьте записи для GitHub Pages (инструкция: docs.github.com → Pages → Custom domain). Для основного адреса без `www` добавьте A-записи GitHub и CNAME `www` → `ВАШ_ЛОГИН.github.io`.
 2. В репозитории: Settings → Pages → Custom domain → впишите домен и включите **Enforce HTTPS**. GitHub сам перенаправит вторую форму адреса (с `www` или без) на основную.
 3. Замените адрес во всех файлах одной командой (canonical, og:url, og:image, JSON-LD, sitemap.xml, robots.txt, 404.html, README, файл CNAME):
-   `bash tools/set-domain.sh https://ваш-домен.ru/`
+   `bash .github/tools/set-domain.sh https://ваш-домен.ru/`
 4. Проверьте: открываются `https://домен`, `https://www.домен` (перенаправляет), `http://…` (перенаправляет на https); в соцсетях обновите превью через @WebpageBot (Telegram).
 
 
