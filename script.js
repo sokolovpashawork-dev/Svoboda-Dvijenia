@@ -145,3 +145,54 @@
     });
   });
 })();
+
+// Окно «Условия и реквизиты»: открывается по ссылкам [data-terms] и по адресу #terms
+(function(){
+  var dlg=document.getElementById('terms'); if(!dlg)return;
+  function setHash(on){ try{ history.replaceState(null,'',on?'#terms':location.pathname+location.search); }catch(e){} }
+  function open(){ if(dlg.open)return; if(dlg.showModal)dlg.showModal(); else dlg.setAttribute('open',''); dlg.querySelector('.terms__body').scrollTop=0; setHash(true); }
+  function close(){ if(dlg.close)dlg.close(); else dlg.removeAttribute('open'); }
+  document.querySelectorAll('[data-terms]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); open(); }); });
+  dlg.querySelector('[data-terms-close]').addEventListener('click',close);
+  dlg.addEventListener('click',function(e){ if(e.target===dlg)close(); });   // клик по затемнению
+  dlg.addEventListener('close',function(){ if(location.hash==='#terms')setHash(false); });
+  function fromHash(){ if(location.hash==='#terms')open(); }
+  fromHash(); window.addEventListener('hashchange',function(){ if(location.hash==='#terms')open(); });
+})();
+
+// Подсказка прокрутки вкладок целей: затухание по краям и стрелка
+(function(){
+  var wrap=document.querySelector('.tabs-wrap'); if(!wrap)return;
+  var box=wrap.querySelector('.tabs'), next=wrap.querySelector('[data-tabs-next]');
+  function upd(){
+    var max=box.scrollWidth-box.clientWidth;
+    wrap.classList.toggle('can-left', box.scrollLeft>4);
+    wrap.classList.toggle('can-right', box.scrollLeft<max-4);
+  }
+  box.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);
+  window.addEventListener('load',upd);
+  if(next) next.addEventListener('click',function(){ box.scrollBy({left:Math.max(160,box.clientWidth*.6),behavior:'smooth'}); });
+  upd();
+})();
+
+// Просмотр сертификатов
+(function(){
+  var lb=document.getElementById('lb'); var items=[].slice.call(document.querySelectorAll('[data-cert]'));
+  if(!lb||!items.length)return;
+  var img=document.getElementById('lb-img'),cur=0;
+  function show(i){
+    cur=(i+items.length)%items.length; var b=items[cur];
+    img.src=b.getAttribute('data-full'); img.alt=b.querySelector('img').alt;
+    document.getElementById('lb-title').textContent=b.getAttribute('data-title');
+    document.getElementById('lb-meta').textContent=b.getAttribute('data-meta');
+    document.getElementById('lb-count').textContent='Документ '+(cur+1)+' из '+items.length;
+  }
+  items.forEach(function(b,i){ b.addEventListener('click',function(){ show(i); if(lb.showModal)lb.showModal(); else lb.setAttribute('open',''); }); });
+  lb.addEventListener('click',function(e){
+    if(e.target===lb||e.target.closest('[data-lb-close]')){ lb.close(); return; }
+    var n=e.target.closest('[data-lb-nav]'); if(n)show(cur+parseInt(n.getAttribute('data-lb-nav'),10));
+  });
+  lb.addEventListener('keydown',function(e){ if(e.key==='ArrowLeft')show(cur-1); if(e.key==='ArrowRight')show(cur+1); });
+  lb.addEventListener('close',function(){ img.removeAttribute('src'); });
+})();
