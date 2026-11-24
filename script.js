@@ -107,10 +107,10 @@
   }
 
   // ----- Значки соцсетей -----
-  // Адреса впишите в index.html: атрибут href у ссылок data-social="telegram" и data-social="instagram".
+  // Адреса впишите в index.html: атрибут href у ссылок data-social="telegram" и data-social="vk".
   // Пока там стоит «#», значки не ведут никуда.
   function isRealUrl(href) {
-    return /^https?:\/\/[^\s]+\.[^\s]+/.test(href || '') && !/^https?:\/\/(www\.)?(t\.me|instagram\.com)\/?$/.test(href);
+    return /^https?:\/\/[^\s]+\.[^\s]+/.test(href || '') && !/^https?:\/\/(www\.)?(t\.me|vk\.com)\/?$/.test(href);
   }
   document.querySelectorAll('[data-social]').forEach(function (a) {
     if (!isRealUrl(a.getAttribute('href'))) {

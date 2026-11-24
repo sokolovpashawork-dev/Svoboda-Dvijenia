@@ -7,7 +7,7 @@ NEW="${1:-}"
 [[ "$NEW" =~ ^https://[a-z0-9.-]+\.[a-z]{2,}/$ ]] || { echo "Укажите адрес вида https://example.ru/"; exit 1; }
 cd "$(dirname "$0")/.."
 OLD="https://sokolovpashawork-dev.github.io/Svoboda-Dvijenia/"
-FILES="index.html 404.html robots.txt sitemap.xml README.md"
+FILES="index.html 404.html robots.txt sitemap.xml .github/README.md"
 for f in $FILES; do sed -i "s|${OLD}|${NEW}|g" "$f"; done
 HOST="${NEW#https://}"; HOST="${HOST%/}"
 echo "$HOST" > CNAME
