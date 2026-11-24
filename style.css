@@ -1,3 +1,15 @@
+/* ===== Шрифты (свои файлы, без Google Fonts; лицензия SIL OFL) ===== */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/inter-400.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/inter-500.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/inter-600.woff2") format("woff2"); }
+@font-face { font-family: "Oswald"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/oswald-400.woff2") format("woff2"); }
+@font-face { font-family: "Oswald"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/oswald-600.woff2") format("woff2"); }
+@font-face { font-family: "Oswald"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/oswald-700.woff2") format("woff2"); }
+/* Запасные шрифты с теми же размерами, что у Inter и Oswald: при подмене на настоящий шрифт текст не «прыгает» */
+@font-face { font-family: "Inter Fallback"; font-weight: 400 500; src: local("Arial"), local("ArialMT"), local("Liberation Sans"); size-adjust: 106.5%; ascent-override: 91%; descent-override: 22.7%; line-gap-override: 0%; }
+@font-face { font-family: "Inter Fallback"; font-weight: 600 700; src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("LiberationSans-Bold"); size-adjust: 100.7%; ascent-override: 96.2%; descent-override: 24%; line-gap-override: 0%; }
+@font-face { font-family: "Oswald Fallback"; font-weight: 400 700; src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("LiberationSans-Bold"); size-adjust: 81%; ascent-override: 147.3%; descent-override: 35.7%; line-gap-override: 0%; }
+
 /* ===== Переменные ===== */
 :root {
   --cream: #f4f0f3;
@@ -14,8 +26,8 @@
   --rose-line: #d7c9d3;
   --icon: #e6dde5;
   --line: #d9cfd8;
-  --serif: "Oswald", "Arial Narrow", Impact, "Helvetica Neue", Arial, sans-serif;
-  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --serif: "Oswald", "Oswald Fallback", "Arial Narrow", Impact, "Helvetica Neue", Arial, sans-serif;
+  --sans: "Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   --r: 0;
   --hero-img: url("images/hero.jpg");
   --pad: clamp(36px, 4.8vw, 60px);
