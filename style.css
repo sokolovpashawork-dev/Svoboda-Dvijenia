@@ -798,3 +798,18 @@ html:has(.lb[open]) { overflow: hidden; }
 }
 @keyframes fabIn { from { opacity: 0; filter: blur(8px); transform: translateY(10px); } to { opacity: 1; filter: blur(0); transform: none; } }
 @media (prefers-reduced-motion: reduce) { .fab-cta:not([hidden]) { animation: fadeIn .4s ease backwards; } }
+
+/* ===== Кнопки «Написать во ВКонтакте» (цвет чуть темнее фирменного #0077FF ради контраста белого текста, как у Telegram) ===== */
+.ico--vk { width: 24px; height: 15px; stroke: none; fill: currentColor; flex: none; }
+.btn--vk { display: inline-flex; align-items: center; justify-content: center; gap: .6em; background: linear-gradient(180deg, #0e68e4, #085ccc); border-color: #085ccc; color: #fff; }
+.btn--vk:hover { background: linear-gradient(180deg, #1573ee, #0a63d8); border-color: #0a63d8; color: #fff; }
+.offer__actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+.offer__actions .offer__btn, .offer--tier .offer__actions > .offer__btn { margin-top: 0; }
+a.btn.offer__btn.offer__btn--vk { height: 46px; gap: .6em; background: #fff; border-color: #0062cc; color: #0062cc; font-size: .8rem; }
+a.btn.offer__btn.offer__btn--vk:hover, a.btn.offer__btn.offer__btn--vk:focus-visible { background: #0062cc; border-color: #0062cc; color: #fff; }
+.cta__btns { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+.cta__btns .btn { width: 100%; }
+@media (max-width: 760px) { .cta__act { width: 100%; } .cta__btns { width: 100%; } }
+@media (max-width: 760px) { .hero__actions { gap: 8px; } .hero__actions .btn { padding-top: .8em; padding-bottom: .8em; } }
+.footer__bottom a.footer__mail { color: inherit; text-decoration: none; }
+.footer__bottom a.footer__mail:hover, .footer__bottom a.footer__mail:focus-visible { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
