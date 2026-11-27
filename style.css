@@ -613,6 +613,8 @@ a, button, summary { touch-action: manipulation; }
 .footer__links { margin: 8px 0 0; font-size: .85rem; line-height: inherit; }
 .footer__links a { color: rgba(244,240,243,.6); font: inherit; letter-spacing: inherit; text-decoration: none; }
 .footer__links a:hover { color: #fff; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.footer__links a { white-space: nowrap; }
 
 /* ===== Окно «Условия и реквизиты» ===== */
 html:has(.terms[open]) { overflow: hidden; }
@@ -633,6 +635,8 @@ html:has(.terms[open]) { overflow: hidden; }
 .terms h3 i { flex: none; display: inline-grid; place-items: center; width: 28px; height: 28px; background: var(--accent); color: #fff; font: 600 .9rem var(--serif); font-style: normal; }
 .terms p { margin: 0 0 10px; line-height: 1.6; color: var(--ink); }
 .terms p:last-child { margin-bottom: 0; }
+.terms ul { margin: 0 0 10px; padding-left: 1.3em; line-height: 1.6; color: var(--ink); }
+.terms li { margin-bottom: 4px; }
 .terms a { color: var(--accent); text-underline-offset: 3px; }
 @media (max-width: 560px) {
   .terms { width: calc(100vw - 16px); max-height: calc(100vh - 16px); max-height: calc(100dvh - 16px); }

@@ -164,18 +164,26 @@
   });
 })();
 
-// Окно «Условия и реквизиты»: открывается по ссылкам [data-terms] и по адресу #terms
+// Окна «Оферта и реквизиты» (#terms) и «Политика конфиденциальности» (#privacy): открываются по ссылкам [data-terms] / [data-privacy] и по адресу с якорем
 (function(){
-  var dlg=document.getElementById('terms'); if(!dlg)return;
-  function setHash(on){ try{ history.replaceState(null,'',on?'#terms':location.pathname+location.search); }catch(e){} }
-  function open(){ if(dlg.open)return; if(dlg.showModal)dlg.showModal(); else dlg.setAttribute('open',''); dlg.querySelector('.terms__body').scrollTop=0; setHash(true); }
-  function close(){ if(dlg.close)dlg.close(); else dlg.removeAttribute('open'); }
-  document.querySelectorAll('[data-terms]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); open(); }); });
-  dlg.querySelector('[data-terms-close]').addEventListener('click',close);
-  dlg.addEventListener('click',function(e){ if(e.target===dlg)close(); });   // клик по затемнению
-  dlg.addEventListener('close',function(){ if(location.hash==='#terms')setHash(false); });
-  function fromHash(){ if(location.hash==='#terms')open(); }
-  fromHash(); window.addEventListener('hashchange',function(){ if(location.hash==='#terms')open(); });
+  var items=[['terms','data-terms'],['privacy','data-privacy']].map(function(p){ var d=document.getElementById(p[0]); return d?{id:p[0],attr:p[1],dlg:d}:null; }).filter(Boolean);
+  if(!items.length)return;
+  function setHash(h){ try{ history.replaceState(null,'',h?'#'+h:location.pathname+location.search); }catch(e){} }
+  function closeDlg(d){ if(d.close)d.close(); else d.removeAttribute('open'); }
+  function open(it){
+    if(it.dlg.open)return;
+    items.forEach(function(o){ if(o!==it&&o.dlg.open)closeDlg(o.dlg); });   // одновременно открыто только одно окно
+    if(it.dlg.showModal)it.dlg.showModal(); else it.dlg.setAttribute('open','');
+    it.dlg.querySelector('.terms__body').scrollTop=0; setHash(it.id);
+  }
+  items.forEach(function(it){
+    document.querySelectorAll('['+it.attr+']').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); open(it); }); });
+    it.dlg.querySelector('.terms__close').addEventListener('click',function(){ closeDlg(it.dlg); });
+    it.dlg.addEventListener('click',function(e){ if(e.target===it.dlg)closeDlg(it.dlg); });   // клик по затемнению
+    it.dlg.addEventListener('close',function(){ if(location.hash==='#'+it.id)setHash(''); });
+  });
+  function fromHash(){ items.forEach(function(it){ if(location.hash==='#'+it.id)open(it); }); }
+  fromHash(); window.addEventListener('hashchange',fromHash);
 })();
 
 // Подсказка прокрутки вкладок целей: затухание по краям и стрелка
